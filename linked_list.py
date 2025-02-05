@@ -38,6 +38,8 @@ class Linkedlist:
 
         new_node.next = self.head
         self.head = new_node
+
+        
     def print_list(self):
 
         current_node = self.head
@@ -112,3 +114,79 @@ class Linkedlist:
         # And unassign the current node. 
         current_node = None
     
+    def del_by_pos(self, pos):
+
+        # If the list is empty or the user entered a negative value for index we will exit the function
+        if not self.head or pos<0:
+            return
+        
+        count = 0
+
+        # Starting with the first node 
+        current_node = self.head
+
+        # If the position is 0 we will unlink the first node 
+        if pos == 0 :
+            self.head = current_node.next
+            current_node = None
+            return
+        
+        # To keep the track of the previous node
+        previous_node = None
+
+        # While current node exisits 
+        while current_node:
+
+        # If count equal to position break else keep looping through the list    
+            if count == pos:
+                break
+
+            count+=1
+            previous_node = current_node
+            current_node = current_node.next
+
+        # If the position is out of bounds return 
+        if not current_node:
+            return
+        
+        # At this point we must have reached the position
+        # The next node to the previous node is the next node to the current node
+        previous_node.next = current_node.next
+        current_node = None
+
+    def update(self, pos, data):
+
+        # If the list is empty or the position is less than 0 return 
+
+        if not self.head or pos < 0:
+            return 
+        
+        # Initilaization 
+        count = 0 
+
+        current_node = self.head
+
+        # If the position is 0 then we will update the data of the first node 
+        if pos == 0 : 
+
+            current_node.data = data
+            return 
+        
+        # Loop throught the list until we reach the position
+        while current_node : 
+
+            if count == pos:
+                break
+
+            current_node = current_node.next
+            count += 1
+
+        # If the position is out of bounds return 
+        if not current_node:
+            return
+        
+        # At this point we have reached the position 
+        # Update the value of the current node 
+        current_node.data = data
+
+            
