@@ -241,7 +241,19 @@ class Linkedlist:
         
         return
 
-            
+    def find_len(self):
+
+        length = 1
+
+        current_node = self.head 
+
+        while current_node:
+
+            length+=1
+            current_node = current_node.next
+
+        print(f'length of the linked list is {length}')
+
 
 
 
