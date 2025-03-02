@@ -69,7 +69,7 @@ class Linkedlist:
                 print("The previous node does not exist")
                 return
             
-            # If it finds the data in the current node
+            # If we reach the node after which we want to insert the new node
             elif current_node.data == prev_node:
 
                 # Store the next in a temp variable 
@@ -154,7 +154,7 @@ class Linkedlist:
         previous_node.next = current_node.next
         current_node = None
 
-    def update(self, pos, data):
+    def update_node(self, pos, data):
 
         # If the list is empty or the position is less than 0 return 
 
@@ -189,4 +189,61 @@ class Linkedlist:
         # Update the value of the current node 
         current_node.data = data
 
+    def reverse_list(self): 
+        
+        # intialization
+        previous_node = None
+        current_node = self.head
+
+        # while there exists current node
+        while current_node:
+            # Storing the next node to the current node in a variable 
+            next_node = current_node.next
+            # Linking the next reference variable of current node to the preveious node
+            current_node.next = previous_node
+            # Looping forward to the next node
+            # Current node becomes the previous node 
+            previous_node = current_node
+            # Next node becomes current node before we go to the next loop. 
+            current_node = next_node
+
+        self.head = previous_node
+
+    
+    def insert_position(self,pos,data):
+
+        new_node = Node(data)
+        current_node = self.head
+        count = 1
+
+        if (pos < 0):
+            return
+
+        if (pos == 0):
+
+            new_node.next = current_node.next
+            self.head = new_node 
             
+
+        while current_node:
+
+            if (count == pos) :
+
+                new_node.next = current_node.next
+                current_node.next = new_node
+                break
+
+            if (current_node.next == None):
+                break
+
+            current_node = current_node.next 
+            count+=1
+        
+        return
+
+            
+
+
+
+
+
