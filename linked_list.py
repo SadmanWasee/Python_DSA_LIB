@@ -255,6 +255,26 @@ class Linkedlist:
         print(f'length of the linked list is {length}')
 
 
+    def search(self, data):
+
+        position = 1
+        current_node = self.head
+
+        while current_node:
+
+            if (current_node.data == data):
+                print(f'{data} found at index: {position}')
+                return
+
+            position+=1
+            current_node = current_node.next
+        
+        print(f'{data} not found in list')
+
+        
+
+
+
 
 
 
